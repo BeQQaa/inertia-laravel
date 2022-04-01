@@ -18,18 +18,17 @@ class PaginationHelper
     public static function linksHandler(mixed $peoples, string $uri)
     {
         $baseUri = parse_url($uri);
-        if (isset($baseUri['port'])){
-            $baseUri['port'] = ':' . $baseUri['port'];
-        }
+
         if ($peoples['next'] != null) {
             $externalUri = (parse_url($peoples['next']));
-            $peoples['next'] = $baseUri['scheme'] . '://' . $baseUri['host'] . $baseUri['port'] . $baseUri['path'] . '?' . $externalUri['query'];
+            $peoples['next'] = preg_replace('/\?+([^\n]+)/', '', $uri) .'?'. $externalUri['query'];
         }
+
         if ($peoples['previous'] != null) {
             $externalUri = (parse_url($peoples['previous']));
-            $peoples['previous'] = $baseUri['scheme'] . '://' . $baseUri['host'] . $baseUri['port'] . $baseUri['path'] . '?' . $externalUri['query'];
+            $peoples['previous'] = preg_replace('/\?+([^\n]+)/', '', $uri) .'?'. $externalUri['query'];
         }
-//        dd($peoples);
+
         return $peoples;
     }
 }

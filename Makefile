@@ -1,3 +1,5 @@
+COPY_FILES = cp .env.example .env
+
 serve:
 	php artisan serve
 
@@ -13,10 +15,10 @@ down:
 build:
 	docker-compose -f docker-compose.yml build
 
-migrate:
-	 docker-compose exec app php artisan migrate:fresh
-
 init:
 	docker-compose build
 	composer install
 	npm install
+	$(COPY_FILES)
+	php artisan key:generate
+
