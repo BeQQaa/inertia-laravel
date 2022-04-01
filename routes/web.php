@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::inertia('/', 'Home')->name('home');
+//Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/people{page?}', [PeopleController::class, 'index'])->name('people.index');

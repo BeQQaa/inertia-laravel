@@ -1,13 +1,17 @@
 <template>
-<h1>{{title}}</h1>
+    <Head :title="'Home'"/>
+    <Layout/>
 </template>
 
 <script>
-import NavBar from "../Layout/NavBar";
+import {Head} from '@inertiajs/inertia-vue3'
+import Layout from "../Shared/Layout";
 export default {
-    components: {NavBar},
-    props:{
-        title:String
+    components: {
+        Head,
+        Layout
+    },
+    props: {
     }
 }
 </script>
