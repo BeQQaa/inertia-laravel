@@ -10,7 +10,7 @@
 ## To start
 
 Using Makefile:
-    
+
     - make init
     - make up
     - npm run dev|hot
@@ -23,3 +23,7 @@ Other:
     - cp .env.example .env
 	- php artisan key:generate
     - docker-compose up -d
+
+Sever run on:
+
+    localhost:80
